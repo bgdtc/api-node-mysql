@@ -1,0 +1,27 @@
+CREATE DATABASE IF NOT EXISTS `quasar_tutorial` CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+USE quasar_tutorial;
+
+CREATE TABLE  `users` (
+`id` INT AUTO_INCREMENT PRIMARY KEY ,
+`full_name` VARCHAR( 20 ) NOT NULL ,
+`nickname` VARCHAR( 20 ) NOT NULL ,
+`email` VARCHAR( 75 ) NOT NULL ,
+`password` VARCHAR( 255 ) NOT NULL
+) ENGINE = INNODB;
+
+
+CREATE TABLE  `comments` (
+`id` INT AUTO_INCREMENT PRIMARY KEY ,
+`content` VARCHAR( 100 ) NOT NULL ,
+`author_id` INT NOT NULL ,
+`avis` BOOLEAN NOT NULL
+) ENGINE = INNODB;
+
+
+CREATE TABLE  `messages` (
+`id` INT AUTO_INCREMENT PRIMARY KEY ,
+`subject` VARCHAR( 100 ) NOT NULL ,
+`content` VARCHAR( 100 ) NOT NULL ,
+`email` VARCHAR ( 75 ) NOT NULL 
+) ENGINE = INNODB;
