@@ -23,7 +23,7 @@ router.route('/user')
 
 // User ID
 router.route('/user/:id')
-    .get(userController.getUser)
+    .get(userController.getUserFull)
     .put(userController.editOne)
     .delete(userController.deleteOne)
 
@@ -52,6 +52,7 @@ router.route('/messages')
 
 
 router.route('/messages/:id')
+    .get(messagesController.getMessage)
     .put(messagesController.editOne)
     .delete(messagesController.delete)
 

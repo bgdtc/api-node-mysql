@@ -40,6 +40,50 @@ exports.getUser = async (req, res) => {
     })
 }
 
+
+exports.getUserFull = async (req, res) => {
+    // SQL récupération de tout les users
+    if (req.params.id == Number(req.params.id)) {
+        let sql = `SELECT *
+        FROM users
+        WHERE users.id  = ${req.params.id} ;`
+
+        await db.query(sql, (error, data, fields) => {
+            if (error) throw error;
+            res.json({
+                status: 200,
+                listUser: data,
+                message: "user lists retrieved tutyuyusuccessfully"
+            })
+            // res.render('home', {
+            //     status: 200,
+            //     listUser: data,
+            //     message: "users lists retrieved successfully"
+            // })
+        })
+    } else {
+        let sql = `SELECT *
+        FROM users
+        WHERE users.nickname  = '${req.params.id}' ;`
+
+
+        await db.query(sql, (error, data, fields) => {
+            if (error) throw error;
+            res.json({
+                status: 200,
+                listUser: data,
+                message: "user lists retrieved tutyuyusuccessfully"
+            })
+            // res.render('home', {
+            //     status: 200,
+            //     listUser: data,
+            //     message: "users lists retrieved successfully"
+            // })
+        })
+    }
+
+}
+
 //POST
 exports.post = async (req, res) => {
     // SQL pour creer un users

@@ -24,6 +24,30 @@ exports.get = async (req, res) => {
     })
 }
 
+//get Message author
+exports.getMessage = async (req, res) => {
+    // SQL récupération de tout les users
+    let sql = `SELECT *
+               FROM messages
+               RIGHT OUTER JOIN users
+               ON users.nickname = messages.id
+               WHERE users.nickname = '${req.params.id}' `;
+
+    await db.query(sql, (error, data, fields) => {
+        if (error) throw error;
+        res.json({
+            status: 200,
+            listMessages: data,
+            message: "messages lists retrieved successfully"
+        })
+        // res.render('home', {
+        //     status: 200,
+        //     listUser: data,
+        //     message: "users lists retrieved successfully"
+        // })
+    })
+}
+
 //POST
 
 
